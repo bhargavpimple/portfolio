@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "home"
+    label: "Home Page"
+    files:
+      - file: "content/home.json"
+        label: "Home Content"
+        name: "home"
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Summary", name: "summary", widget: "text"}
+          - {label: "Current Role", name: "current_role", widget: "string"}
+          - {label: "Education", name: "education", widget: "string"}
+
+  - name: "documents"
+    label: "Documents"
+    folder: "content/documents"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "select", options: ["resume", "certificate", "experience_letter", "other"]}
+      - {label: "File Name", name: "file_name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+
+  - name: "sections"
+    label: "Extra Sections"
+    folder: "content/sections"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Section Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
